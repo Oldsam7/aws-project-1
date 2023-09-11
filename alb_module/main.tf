@@ -12,15 +12,15 @@ resource "aws_lb_target_group" "tg" {
 resource "aws_alb_target_group_attachment" "tg_attachment1" {
   count            = length(var.instance_id) >= 1 ? 1 : 0
   target_group_arn = aws_lb_target_group.tg.arn
-#  target_id        = element(tolist(module.server1, 0).id)
-  target_id        = element(var.instance_id, 0)
+  #  target_id        = element(tolist(module.server1, 0).id)
+  target_id = element(var.instance_id, 0)
 }
 
 resource "aws_alb_target_group_attachment" "tg_attachment2" {
   count            = length(var.instance_id) >= 2 ? 1 : 0
   target_group_arn = aws_lb_target_group.tg.arn
-#  target_id        = element(var.instance2_id, 1)
-  target_id        = element(var.instance_id, 1)
+  #  target_id        = element(var.instance2_id, 1)
+  target_id = element(var.instance_id, 1)
 }
 
 
@@ -43,8 +43,8 @@ resource "aws_lb_listener" "listener" {
     type = "redirect"
 
     redirect {
-      port             = "443"
-      protocol         = "HTTPS"
+      port        = "443"
+      protocol    = "HTTPS"
       status_code = "HTTP_301"
     }
   }

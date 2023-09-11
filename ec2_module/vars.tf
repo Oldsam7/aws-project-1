@@ -18,16 +18,7 @@ variable "instance_type" {
 variable "keypair" {
   type = string
 }
-variable "id" {
-  type = map(any)
-  default = {
-    publicsubnet1 = "publicsubnet1"
-    publicsubnet2 = "publicsubnet2"
-  }
-}
-variable "subnet" {
-  type = string
-}
+variable "subnet_id" {}
 variable "sg_id" {
   type = set(string)
 }

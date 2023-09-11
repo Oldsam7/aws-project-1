@@ -16,6 +16,7 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+
 #security group variables
 variable "port1" {
   default = "ssh"

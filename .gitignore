@@ -13,4 +13,6 @@
 # to change depending on the environment.
 #.tfvars files
 *.tfvars
+
+#backend file
 backend.tf
