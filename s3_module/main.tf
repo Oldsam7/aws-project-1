@@ -2,11 +2,6 @@ data "aws_s3_bucket" "s3bucket" {
   bucket = var.BUCKET
 }
 
-# resource "aws_s3_bucket_acl" "acl" {
-#   bucket = "data.aws_s3_bucket.s3bucket"
-#   acl = "private"
-# }
-
 data "aws_s3_object" "server1_userdata" {
   bucket = var.BUCKET
   key    = var.server1_userdata_key
@@ -46,7 +41,6 @@ resource "aws_iam_policy" "s3_access_policy" {
       Effect = "Allow",
       Resource = [
         "${data.aws_s3_bucket.s3bucket.arn}",
-        #"data.aws_s3_bucket.s3bucket.arn/*"
         "${data.aws_s3_bucket.s3bucket.arn}/*"
       ],
     }]
