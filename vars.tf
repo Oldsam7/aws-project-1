@@ -8,7 +8,7 @@ variable "myip" {}
 #vpc variables
 
 
-#instance variables
+#instance variable
 variable "os" {
   default = "linux"
 }
