@@ -37,6 +37,12 @@ module "alb" {
   protocol             = var.protocol
 }
 
+module "route53" {
+  source    = ".//route53_module"
+  zone_name = var.zone_name
+  alb_dns   = module.alb.alb_id
+}
+
 module "server1" {
   source                      = ".//ec2_module"
   instance_count              = 1
