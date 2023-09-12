@@ -46,3 +46,6 @@ variable "protocol" {
   default = "tcp"
 }
 
+
+#route53 variables
+variable "zone_name" {}
