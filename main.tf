@@ -28,7 +28,7 @@ module "alb" {
   vpc_id           = module.vpc.vpc_id
   protocol_version = var.protocol_version
   # instance1            = local.instance1
-  # instance2            = local.instance2
+  # instance2            = local.instance
   instance_id1 = local.server1_id[0]
   instance_id2 = local.server2_id[0]
   instance_ids = [local.server1_id, local.server2_id]

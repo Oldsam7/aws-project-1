@@ -59,7 +59,7 @@ resource "aws_lb_listener" "listener" {
     target_group_arn = aws_lb_target_group.tg.arn
     # redirect {
     #   port        = "443"
-    #   protocol    = "HTTPS"
+    #   protocol    = "HTTP"
     #   status_code = "HTTP_31"
     # }
   }

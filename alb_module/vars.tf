@@ -17,7 +17,7 @@ variable "instance_ids" {
   type = list(any)
 }
 # variable "server1_id" {}
-# variable "server2_id" {
+# variable "server2_id" 
 
 # }
 #variable "instance2_id" {}
