@@ -2,21 +2,25 @@ variable "vpc_id" {}
 variable "port" {
   type = map(any)
   default = {
-    "ssh"   = 22
-    "http"  = 80
-    "https" = 443
+    "22"  = 22
+    "80"  = 80
+    "443" = 443
   }
 }
-variable "port1" {
-  type = string
+variable "ssh" {
+  type    = number
+  default = 22
 }
-variable "port2" {
-  type = string
+variable "http" {
+  type    = number
+  default = 80
 }
-variable "port3" {
-  type = string
+variable "https" {
+  type    = number
+  default = 443
 }
-variable "protocol" {
-  type = string
+variable "tcp_protocol" {
+  type    = string
+  default = "tcp"
 }
 variable "myip" {}

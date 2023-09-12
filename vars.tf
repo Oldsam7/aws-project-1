@@ -18,18 +18,7 @@ variable "instance_type" {
 
 
 #security group variables
-variable "port1" {
-  default = "ssh"
-}
-variable "port2" {
-  default = "http"
-}
-variable "port3" {
-  default = "https"
-}
-variable "protocol" {
-  default = "tcp"
-}
+
 
 
 #s3 variables
@@ -51,5 +40,9 @@ variable "protocol_version" {
 }
 variable "load_balancer_type" {
   default = "application"
+}
+variable "protocol" {
+  type    = string
+  default = "tcp"
 }
 

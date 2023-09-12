@@ -1,7 +1,6 @@
 locals {
-  server1_id = module.server1.instance_id
-  server2_id = module.server2.instance_id
-  #instance_ids = module.ec2_module.instance_ids
+  server1_id       = module.server1.instance_id
+  server2_id       = module.server2.instance_id
   subnet1_id       = module.vpc.publicsubnet1_id
   subnet2_id       = module.vpc.publicsubnet2_id
   instance_profile = module.s3.instance_profile
@@ -21,25 +20,21 @@ module "s3" {
 }
 
 module "alb" {
-  source           = ".//alb_module"
-  tg_port          = var.tg_port
-  target_type      = var.target_type
-  tg_protocol      = var.tg_protocol
-  vpc_id           = module.vpc.vpc_id
-  protocol_version = var.protocol_version
-  # instance1            = local.instance1
-  # instance2            = local.instance
-  instance_id1 = local.server1_id[0]
-  instance_id2 = local.server2_id[0]
-  instance_ids = [local.server1_id, local.server2_id]
-  # server1_id           = local.server1_id
-  # server2_id           = local.server2_id
+  source               = ".//alb_module"
+  tg_port              = var.tg_port
+  target_type          = var.target_type
+  tg_protocol          = var.tg_protocol
+  vpc_id               = module.vpc.vpc_id
+  protocol_version     = var.protocol_version
+  instance_id1         = local.server1_id[0]
+  instance_id2         = local.server2_id[0]
+  instance_ids         = [local.server1_id, local.server2_id]
   load_balancer_type   = var.load_balancer_type
-  securitygroup_id     = module.securitygroup.sg_id
   subnet1_id           = local.subnet1_id
   subnet2_id           = local.subnet2_id
   server1_userdata_key = var.server1_userdata_key
   server2_userdata_key = var.server2_userdata_key
+  protocol             = var.protocol
 }
 
 module "server1" {
@@ -78,11 +73,7 @@ module "server2" {
 }
 
 module "securitygroup" {
-  source   = ".//securitygroup_module"
-  vpc_id   = module.vpc.vpc_id
-  myip     = var.myip
-  port1    = var.port1
-  port2    = var.port2
-  port3    = var.port3
-  protocol = var.protocol
+  source = ".//securitygroup_module"
+  vpc_id = module.vpc.vpc_id
+  myip   = var.myip
 }
