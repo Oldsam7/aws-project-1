@@ -46,6 +46,9 @@ variable "target_type" {
 variable "tg_protocol" {
   default = "HTTP"
 }
+variable "protocol_version" {
+  default = "HTTP1"
+}
 variable "load_balancer_type" {
   default = "application"
 }
