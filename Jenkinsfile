@@ -4,7 +4,6 @@ pipeline {
     tools{
         terraform 'terraform_home'                        //'terraform_home' is the tool name defined in Jenkins Global Tool Configuration
     }
-    }
 
     stages {
         stage('Checkout') {
@@ -70,4 +69,5 @@ pipeline {
                         body: 'The Jenkins pipeline has completed successfully',
                           to: 'yellayakshi.bijji.135@gmail.com'
         }
+    }
 }
