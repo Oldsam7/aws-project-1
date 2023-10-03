@@ -70,5 +70,4 @@ pipeline {
                         body: 'The Jenkins pipeline has completed successfully',
                           to: 'yellayakshi.bijji.135@gmail.com'
         }
-    }
 }
