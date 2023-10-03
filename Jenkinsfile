@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git https://github.com/yellayakshi-bijji/aws_project_1.git                //checkout the source code from the version control system (e.g., Git)
+                git 'https://github.com/yellayakshi-bijji/aws_project_1.git'                //checkout the source code from the version control system (e.g., Git)
             }
         }
         stage('Terraform Init') {
