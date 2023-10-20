@@ -62,7 +62,7 @@ pipeline {
         success{
             emailext subject: 'Build Success',
                         body: 'The Jenkins pipeline has completed successfully',
-                          to: 'yellayakshi.bijji.135@gmail.com'
+                          to: 'amankwaa4@hotmail.com'
         }
     }
 } 
