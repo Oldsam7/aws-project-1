@@ -1,10 +1,5 @@
 pipeline {
     agent any                                                                             //Runs on any available agent
-
-    tools{
-        terraform 'terraform_home'                        //'terraform_home' is the tool name defined in Jenkins Global Tool Configuration
-    }
-
     stages {
         stage('Checkout') {
             steps {
