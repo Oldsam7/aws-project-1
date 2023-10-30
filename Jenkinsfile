@@ -21,48 +21,4 @@ pipeline {
                 sh 'terraform apply "tfplan" -auto-approve'                                      //apply the terraform configuration to create/update infrastructure
             }
         }
-        stage('Manual Approval') {
-            steps{
-                script{
-                    def userInput = input(
-                        id: 'approval',
-                        message: 'Proceed with resource destruction (yes/no)? ',
-                        parameters: [booleanParam(defaultValue: true, description: 'Approve?')]
-                    )
-
-                    if (userInput){
-                        def pauseInput = input(
-                            id: 'pause',
-                            message: 'Pause destruction for (minutes): ',
-                            parameters: [string(name: 'pauseDuration', defaultValue: '0', description: 'Minutes')]
-                        )
-
-                        def minutesToPause = pauseInput.toInteger()
-
-                        if (minutesToPause > 0){
-                            echo "Pausing destruction for ${minutesToPause} minutes..."
-                            sleep time: minutesToPause, unit: 'MINUTES'
-                        } else {
-                            echo "Not pausing destruction!"
-                        }
-                    } else{
-                        error('Resource destruction not approved. Aborting pipeline!!')
-                    }
-                }
-            }
-        }
-        stage('Terraform Destroy'){
-            steps{
-                sh 'terraform destroy -auto-approve'
-            }
-        }
-        //more stages
-    } 
-    post{
-        success{
-            emailext subject: 'Build Success',
-                        body: 'The Jenkins pipeline has completed successfully',
-                          to: 'amankwaa4@hotmail.com'
-        }
     }
-} 
